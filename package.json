@@ -1,0 +1,65 @@
+{
+  "name": "@flowscripter/io-gateway-http",
+  "version": "0.0.0",
+  "description": "Local HTTP gateway serving pluggable-io-framework IOProvider locations to tools that only speak HTTP",
+  "keywords": [
+    "bun",
+    "gateway",
+    "http",
+    "io",
+    "library",
+    "pluggable-io-framework"
+  ],
+  "homepage": "https://github.com/flowscripter/io-gateway-http#readme",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/flowscripter/io-gateway-http.git"
+  },
+  "files": [
+    "dist",
+    "src",
+    "index.ts",
+    "README.md",
+    "LICENSE"
+  ],
+  "type": "module",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "bun": "./index.ts",
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "test": "bun test"
+  },
+  "dependencies": {
+    "@flowscripter/pluggable-io-framework": "^2.1.0",
+    "@flowscripter/pluggable-io-framework-api": "^3.1.1"
+  },
+  "devDependencies": {
+    "@flowscripter/io-plugin-filesystem": "^2.0.2",
+    "@flowscripter/io-plugin-http": "^1.0.0",
+    "@types/bun": "^1.4.2",
+    "@types/node": "^26.6.3",
+    "oxfmt": "0.71.0",
+    "oxlint": "1.86.0"
+  },
+  "peerDependencies": {
+    "typescript": "^7.0.2"
+  },
+  "typedocOptions": {
+    "readme": "none",
+    "exclude": [
+      "tests/**"
+    ]
+  }
+}
