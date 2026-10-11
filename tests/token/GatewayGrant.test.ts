@@ -98,6 +98,14 @@ describe("GatewayGrant", () => {
     expect(response.headers.get("content-range")).toBe(`bytes */${size}`);
   });
 
+  test("a multi-range or malformed range is a 416", async () => {
+    for (const range of ["bytes=0-1,5-6", "bytes=oops"]) {
+      const response = await grant().handle(request("GET", { range }), ["movie.mp4"]);
+      expect(response.status).toBe(416);
+      expect(response.headers.get("content-range")).toBe(`bytes */${size}`);
+    }
+  });
+
   test("a range on an entry without range support is served whole", async () => {
     provider.rangeable = false;
     const response = await grant().handle(request("GET", { range: "bytes=10-20" }), ["movie.mp4"]);

@@ -28,10 +28,14 @@ describe("parseRange", () => {
     expect(parseRange("bytes=-0", 100)).toEqual({ kind: "unsatisfiable" });
   });
 
-  test("multi-range, other units and malformed headers are none", () => {
-    expect(parseRange("bytes=0-1,5-6", 100)).toEqual({ kind: "none" });
+  test("multi-range and malformed bytes headers are unsatisfiable", () => {
+    expect(parseRange("bytes=0-1,5-6", 100)).toEqual({ kind: "unsatisfiable" });
+    expect(parseRange("bytes=-", 100)).toEqual({ kind: "unsatisfiable" });
+    expect(parseRange("bytes=9-3", 100)).toEqual({ kind: "unsatisfiable" });
+    expect(parseRange("bytes=abc", 100)).toEqual({ kind: "unsatisfiable" });
+  });
+
+  test("other units are none", () => {
     expect(parseRange("items=0-1", 100)).toEqual({ kind: "none" });
-    expect(parseRange("bytes=-", 100)).toEqual({ kind: "none" });
-    expect(parseRange("bytes=9-3", 100)).toEqual({ kind: "none" });
   });
 });
