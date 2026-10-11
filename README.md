@@ -24,8 +24,10 @@
 - Request mapping:
   - `HEAD` reports size, last modified, content type and etag. `Accept-Ranges: bytes` is only
     sent when the handle is range readable.
-  - `GET` with a single range (`a-b`, `a-`, `-n`) answers `206` or `416`. Other range forms serve
-    the whole entry.
+  - `GET` with a single range (`a-b`, `a-`, `-n`) answers `206` or `416`. A multi-range or
+    malformed `bytes` range, or one starting past the end, answers `416` with
+    `Content-Range: bytes */<size>`. Other units, and entries that are not range
+    readable, serve the whole entry.
   - `PUT` and `POST` stream the request body to the provider, chunked or not.
   - `DELETE` calls the provider's `delete`.
   - Unbounded sources are streamed as a chunked `200` with `Accept-Ranges: none`.
@@ -66,6 +68,11 @@ await gateway.close();
 `grant(provider, target, options)` serves a provider the caller already owns.
 `grantLocation(resolver, location, options)` resolves a `js` provider for the
 location and disposes it when the grant is revoked.
+
+## Future Work
+
+- Serve `native` payload providers by converting their payloads to bytes. The
+  gateway only serves `js` providers today.
 
 ## Further Details
 
