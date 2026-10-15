@@ -1,6 +1,6 @@
 {
   "name": "@flowscripter/io-gateway-http",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Local HTTP gateway serving pluggable-io-framework IOProvider locations to tools that only speak HTTP",
   "keywords": [
     "bun",
