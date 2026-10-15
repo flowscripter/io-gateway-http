@@ -7,7 +7,9 @@ export function joinKey(provider: IOProvider, containerKey: string, name: string
   }
   if (name === "") return containerKey;
   if (containerKey === "") return name;
-  return `${containerKey.replace(/\/+$/, "")}/${name}`;
+  let end = containerKey.length;
+  while (end > 0 && containerKey[end - 1] === "/") end--;
+  return `${containerKey.slice(0, end)}/${name}`;
 }
 
 /** The last segment of a key, treating both `/` and `\` as separators. */
