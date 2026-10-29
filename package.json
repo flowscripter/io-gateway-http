@@ -42,17 +42,17 @@
     "test": "bun test"
   },
   "dependencies": {
-    "@flowscripter/pluggable-io-framework": "^2.1.7",
+    "@flowscripter/pluggable-io-framework": "^2.1.8",
     "@flowscripter/pluggable-io-framework-api": "^3.1.6"
   },
   "devDependencies": {
-    "@flowscripter/io-plugin-filesystem": "^2.0.7",
-    "@flowscripter/io-plugin-http": "^1.0.3",
-    "@flowscripter/io-plugin-s3": "^1.0.6",
+    "@flowscripter/io-plugin-filesystem": "^2.0.8",
+    "@flowscripter/io-plugin-http": "^1.0.5",
+    "@flowscripter/io-plugin-s3": "^1.0.7",
     "@types/bun": "^1.4.4",
-    "@types/node": "^26.6.5",
-    "oxfmt": "0.74.0",
-    "oxlint": "1.89.0"
+    "@types/node": "^26.6.6",
+    "oxfmt": "0.75.0",
+    "oxlint": "1.90.0"
   },
   "peerDependencies": {
     "typescript": "^7.0.2"
