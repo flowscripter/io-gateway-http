@@ -79,6 +79,11 @@ location and disposes it when the grant is revoked.
 - [Development](./README/development.md)
 - [API Documentation](https://flowscripter.github.io/io-gateway-http/index.html)
 
+## Design Records
+
+- [Architecture decision records](design/adr/) for decisions specific to this repo
+- [Change specs and plans](design/changes/) from the agentic development workflow
+
 ## License
 
 MIT © Flowscripter
